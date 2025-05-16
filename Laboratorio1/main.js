@@ -9,7 +9,7 @@ const createStyles = () => {
             display: flex;
             flex-direction: column;
             min-height: 100vh;
-            background: #1f1f1f;
+            background:rgb(23, 221, 125);
             color: white;
         }
 
