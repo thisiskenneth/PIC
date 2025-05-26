@@ -1,0 +1,14 @@
+[
+  {
+    "titulo": "¿Qué es el PM2.5?",
+    "descripcion": "Son partículas finas en el aire menores de 2.5 micras. Pueden ingresar al sistema respiratorio y causar enfermedades pulmonares y cardiovasculares."
+  },
+  {
+    "titulo": "Efectos del PM10 en la salud",
+    "descripcion": "Las partículas PM10 pueden irritar los ojos, la nariz y la garganta, y empeorar condiciones como el asma o la bronquitis."
+  },
+  {
+    "titulo": "¿Qué hacer en días con mala calidad del aire?",
+    "descripcion": "Permanece en interiores, usa filtros de aire, y evita realizar actividades físicas intensas en el exterior."
+  }
+]

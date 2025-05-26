@@ -1,0 +1,87 @@
+:root {
+  --color-bg: #f1f5f9;
+  --color-header: #0077b6;
+  --color-sidebar: #ffffff;
+  --color-box: #e3f2fd;
+  --color-title: #0077b6;
+  --font: 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  font-family: var(--font);
+}
+
+main-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--color-header);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  font-size: 1.2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav-sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 220px;
+  bottom: 0;
+  background: var(--color-sidebar);
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+  padding: 1rem 0.5rem;
+  z-index: 999;
+}
+
+nav-sidebar button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin: 0.3rem 0;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  transition: background 0.3s;
+  border-radius: 6px;
+}
+
+nav-sidebar button:hover {
+  background-color: #e3f2fd;
+  color: var(--color-title);
+}
+
+main#contenido {
+  margin-left: 240px;
+  margin-top: 80px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+/* Reutilizable para todos los componentes */
+h2 {
+  font-family: var(--font);
+  color: var(--color-title);
+  margin-bottom: 1rem;
+}
+
+.box {
+  background-color: var(--color-box);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
