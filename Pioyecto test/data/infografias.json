@@ -1,0 +1,26 @@
+[
+  {
+    "titulo": "🩺 PM2.5 y Salud Humana",
+    "descripcion": "Las partículas finas PM2.5 (menos de 2.5 micrómetros) son lo suficientemente pequeñas como para penetrar profundamente en los pulmones e incluso llegar al torrente sanguíneo. Su inhalación prolongada puede provocar enfermedades respiratorias graves como bronquitis, enfisema pulmonar y asma. También se ha vinculado con efectos cardiovasculares y un aumento en la mortalidad prematura. Las personas con enfermedades preexistentes, niños y ancianos son los más vulnerables.",
+    "imagen": "./img/pm25-salud.jpg",
+    "categoria": "Salud"
+  },
+  {
+    "titulo": "🔥 Óxidos de Nitrógeno (NOx) y el Medio Ambiente",
+    "descripcion": "Los óxidos de nitrógeno son compuestos altamente reactivos emitidos principalmente por vehículos motorizados, centrales eléctricas e industrias. Al combinarse con compuestos orgánicos volátiles y la luz solar, generan ozono troposférico, un contaminante que causa irritación ocular, dificultades respiratorias y daños en cultivos agrícolas. Además, el NO₂ contribuye a la formación de lluvia ácida, afectando cuerpos de agua y bosques.",
+    "imagen": "./img/nox-impacto.png",
+    "categoria": "Contaminantes"
+  },
+  {
+    "titulo": "🏠 Contaminación del Aire Interior: Un Riesgo Silencioso",
+    "descripcion": "La contaminación del aire no se limita al exterior. En interiores, puede acumularse dióxido de carbono, monóxido de carbono, compuestos orgánicos volátiles, moho y partículas de humo. Actividades como cocinar con leña o gas sin ventilación, fumar, y el uso excesivo de productos químicos (aerosoles, ambientadores) aumentan la toxicidad del aire. Una ventilación adecuada y el uso de purificadores de aire pueden mitigar estos efectos.",
+    "imagen": "./img/interior-contaminado.jpg",
+    "categoria": "Hogar"
+  },
+  {
+    "titulo": "🌎 Contaminación Atmosférica y su Impacto Global",
+    "descripcion": "La contaminación atmosférica no sólo afecta la salud humana a nivel local, sino que también tiene implicaciones a escala planetaria. Contribuye al calentamiento global, altera patrones climáticos y daña la capa de ozono. También reduce la visibilidad (smog) y perjudica hábitats naturales. La contaminación cruzada entre regiones es frecuente debido a la circulación atmosférica. Abordar esta crisis requiere cooperación internacional y políticas sostenibles.",
+    "imagen": "./img/cambio-climatico.png",
+    "categoria": "Medio Ambiente"
+  }
+]

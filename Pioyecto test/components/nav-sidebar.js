@@ -13,7 +13,10 @@ class NavSidebar extends HTMLElement {
       <button data-componente="user-recommendations">Recomendaciones</button>
       <button data-componente="data-crud">Gestión de Datos</button>
       <button data-componente="educate-section">Educación</button>
+      <button data-componente="contaminacion-componente">Contaminacion</button>
+      <button data-componente="infografias-articulos-componente">Aprende Más</button>
     `;
+    
 
     // Escuchar clics dentro del shadowRoot
     aside.querySelectorAll('button[data-componente]').forEach(btn => {
