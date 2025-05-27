@@ -66,11 +66,17 @@ nav-sidebar button:hover {
 }
 
 main#contenido {
-  margin-left: 240px;
-  margin-top: 80px;
+  margin-left: 240px;    /* deja espacio para el sidebar */
+  margin-top: 80px;      /* deja espacio para el menu */
   padding: 2rem;
-  transition: all 0.3s ease;
+  
+  /* Añadido para mejorar adaptación y evitar cortes */
+  box-sizing: border-box;  
+  max-width: calc(100vw - 240px - 4rem); /* ancho máximo: ancho de ventana menos sidebar y padding */
+  min-height: calc(100vh - 80px - 4rem); /* al menos el alto visible menos header y padding */
+  overflow-x: auto;      /* permite scroll horizontal si algo es muy ancho */
 }
+
 
 /* Reutilizable para todos los componentes */
 h2 {

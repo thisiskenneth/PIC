@@ -5,11 +5,9 @@ class DataCrud extends HTMLElement {
     this.data = JSON.parse(localStorage.getItem('recs')) || [];
   }
 
-  async connectedCallback() {
+  connectedCallback() {
     this.render();
   }
-
-  fetchData = async () => {} // No se usa en este caso
 
   guardarData = () => {
     localStorage.setItem('recs', JSON.stringify(this.data));
@@ -18,7 +16,7 @@ class DataCrud extends HTMLElement {
 
   agregarRecomendacion = (texto) => {
     if (texto.trim()) {
-      this.data.push(texto);
+      this.data.push(texto.trim());
       this.guardarData();
     }
   }
@@ -28,37 +26,191 @@ class DataCrud extends HTMLElement {
     this.guardarData();
   }
 
+  editarRecomendacion = (index, nuevoTexto) => {
+    if (nuevoTexto.trim()) {
+      this.data[index] = nuevoTexto.trim();
+      this.guardarData();
+    }
+  }
+
   render() {
     const style = document.createElement('style');
     style.textContent = `
-      h2 { color: #ff6f61; font-family: Arial, sans-serif; }
-      input, button { margin: 0.5rem 0; padding: 0.5rem; font-size: 1rem; }
-      ul { list-style: none; padding: 0; }
-      li { margin-bottom: 0.5rem; background: #fff1e6; padding: 0.5rem; border-radius: 5px; }
-      button.borrar { background: crimson; color: white; border: none; padding: 0.3rem 0.6rem; margin-left: 1rem; }
+      * {
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 2rem;
+        width: 100%;
+        max-width: 450px;
+        margin: auto;
+        margin-top: 2rem;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        color: #333;
+      }
+
+      h2 {
+        text-align: center;
+        color: #ff4b5c;
+        margin-bottom: 1rem;
+      }
+
+      input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid #ddd;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        transition: border 0.3s;
+      }
+
+      input:focus {
+        border-color: #ff4b5c;
+        outline: none;
+      }
+
+      button {
+        background-color: #ff4b5c;
+        color: white;
+        border: none;
+        padding: 0.6rem 1.2rem;
+        border-radius: 10px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s;
+        margin-right: 0.5rem;
+      }
+
+      button:hover {
+        background-color: #e04352;
+        transform: scale(1.05);
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        background: white;
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        margin-bottom: 0.6rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      }
+
+      .btns {
+        display: flex;
+        gap: 0.3rem;
+      }
+
+      .borrar {
+        background: crimson;
+      }
+
+      .borrar:hover {
+        background: darkred;
+      }
+
+      .editar {
+        background: #0077cc;
+      }
+
+      .editar:hover {
+        background: #005fa3;
+      }
+
+      .edit-input {
+        width: 100%;
+        padding: 0.4rem;
+        margin-top: 0.5rem;
+        border: 2px solid #0077cc;
+        border-radius: 8px;
+      }
+
+      .save-btn {
+        margin-top: 0.5rem;
+        background-color: #28a745;
+      }
+
+      .save-btn:hover {
+        background-color: #218838;
+      }
+
+      .edit-container {
+        margin-top: 0.5rem;
+        width: 100%;
+      }
     `;
 
     const container = document.createElement('div');
-    container.innerHTML = `<h2>Gestión de Recomendaciones</h2>`;
+    container.classList.add('card');
+    container.innerHTML = `<h2>📝 Recomendaciones</h2>`;
 
     const input = document.createElement('input');
-    input.placeholder = 'Escribe una nueva recomendación';
+    input.placeholder = 'Escribe una recomendación...';
 
     const btnAgregar = document.createElement('button');
     btnAgregar.textContent = 'Agregar';
-    btnAgregar.onclick = () => this.agregarRecomendacion(input.value);
+    btnAgregar.onclick = () => {
+      this.agregarRecomendacion(input.value);
+      input.value = '';
+    };
 
     const ul = document.createElement('ul');
     this.data.forEach((rec, i) => {
       const li = document.createElement('li');
-      li.textContent = rec;
+
+      const textoSpan = document.createElement('span');
+      textoSpan.textContent = rec;
+      li.appendChild(textoSpan);
+
+      const btnContainer = document.createElement('div');
+      btnContainer.classList.add('btns');
+
+      const btnEditar = document.createElement('button');
+      btnEditar.className = 'editar';
+      btnEditar.textContent = '🖊️';
+      btnEditar.onclick = () => {
+        const editDiv = document.createElement('div');
+        editDiv.classList.add('edit-container');
+
+        const inputEdit = document.createElement('input');
+        inputEdit.className = 'edit-input';
+        inputEdit.value = rec;
+
+        const btnGuardar = document.createElement('button');
+        btnGuardar.className = 'save-btn';
+        btnGuardar.textContent = 'Guardar';
+        btnGuardar.onclick = () => {
+          this.editarRecomendacion(i, inputEdit.value);
+        };
+
+        editDiv.appendChild(inputEdit);
+        editDiv.appendChild(btnGuardar);
+
+        li.innerHTML = '';
+        li.appendChild(editDiv);
+      };
 
       const btnDel = document.createElement('button');
       btnDel.className = 'borrar';
-      btnDel.textContent = 'Eliminar';
+      btnDel.textContent = '🗑️';
       btnDel.onclick = () => this.eliminarRecomendacion(i);
 
-      li.appendChild(btnDel);
+      btnContainer.appendChild(btnEditar);
+      btnContainer.appendChild(btnDel);
+      li.appendChild(btnContainer);
+
       ul.appendChild(li);
     });
 
