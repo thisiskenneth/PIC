@@ -102,11 +102,22 @@ class DataCrud extends HTMLElement {
         border-radius: 12px;
         padding: 0.75rem 1rem;
         margin-bottom: 0.6rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
         box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.5rem;
       }
+
+
+      li span {
+        flex: 1;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        padding-right: 0.5rem;
+      }
+
 
       .btns {
         display: flex;
