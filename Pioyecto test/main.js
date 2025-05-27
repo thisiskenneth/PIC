@@ -11,7 +11,7 @@ const cargarComponente = (nombre) => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-  cargarComponente('contaminacion-componente');
+  cargarComponente('inicio-section');
 });
 
 // Escuchar evento personalizado 'navegar' desde nav-sidebar
