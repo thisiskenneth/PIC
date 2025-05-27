@@ -5,10 +5,12 @@ class AirQualityDashboard extends HTMLElement {
     this.airData = {};
     this.weatherData = {};
     this.energyData = {};
+    this.apiKey = '78b7434158124748734f6dc3eb8c5730';
+    this.lat = -0.2299;  // Quito
+    this.lon = -78.5249;
   }
 
   async connectedCallback() {
-    // Esperamos las 3 APIs
     await Promise.all([
       this.fetchAirData(),
       this.fetchWeatherData(),
@@ -19,21 +21,38 @@ class AirQualityDashboard extends HTMLElement {
 
   async fetchAirData() {
     try {
-      const response = await fetch('https://api.example.com/air-quality'); // Cambia esta URL por la real
-      if (!response.ok) throw new Error('Error en API Calidad de Aire');
-      this.airData = await response.json();
+      const url = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${this.lat}&lon=${this.lon}&appid=${this.apiKey}`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Error en API Calidad de Aire');
+
+      const json = await res.json();
+      const data = json.list[0].components;
+
+      this.airData = {
+        pm25: data.pm2_5,
+        pm10: data.pm10,
+        co2: (data.co / 1000).toFixed(2), // CO usado como sustituto de CO₂
+        zona: 'Quito'
+      };
     } catch (e) {
       console.error(e);
-      // Datos fallback en caso de error
       this.airData = { pm25: 'N/A', pm10: 'N/A', co2: 'N/A', zona: 'Desconocida' };
     }
   }
 
   async fetchWeatherData() {
     try {
-      const response = await fetch('https://api.example.com/weather'); // Cambia esta URL por la real
-      if (!response.ok) throw new Error('Error en API Clima');
-      this.weatherData = await response.json();
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${this.lat}&lon=${this.lon}&units=metric&appid=${this.apiKey}`;
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('Error en API Clima');
+
+      const json = await res.json();
+      this.weatherData = {
+        temp: `${json.main.temp}°C`,
+        humidity: `${json.main.humidity}%`,
+        wind: `${json.wind.speed} m/s`,
+        zona: json.name || 'Quito'
+      };
     } catch (e) {
       console.error(e);
       this.weatherData = { temp: 'N/A', humidity: 'N/A', wind: 'N/A', zona: 'Desconocida' };
@@ -41,19 +60,17 @@ class AirQualityDashboard extends HTMLElement {
   }
 
   async fetchEnergyData() {
-    try {
-      const response = await fetch('https://api.example.com/energy'); // Cambia esta URL por la real
-      if (!response.ok) throw new Error('Error en API Energía');
-      this.energyData = await response.json();
-    } catch (e) {
-      console.error(e);
-      this.energyData = { consumption: 'N/A', production: 'N/A', zona: 'Desconocida' };
-    }
+    // Simulación: energía ficticia
+    this.energyData = {
+      consumption: `${(Math.random() * 100).toFixed(2)} kWh`,
+      production: `${(Math.random() * 120).toFixed(2)} kWh`,
+      zona: 'Simulado'
+    };
   }
 
   render() {
     const style = document.createElement('style');
-    style.textContent = `
+    style.textContent = `/* (idéntico a tu estilo anterior) */` + `
       * { box-sizing: border-box; }
       :host {
         display: block;
@@ -144,7 +161,6 @@ class AirQualityDashboard extends HTMLElement {
     const container = document.createElement('div');
     container.style.position = 'relative';
 
-    // Para mostrar zona preferí tomar la zona del primer dashboard que tenga y si no, 'Desconocida'
     const zone = this.airData.zona || this.weatherData.zona || this.energyData.zona || 'Desconocida';
 
     container.innerHTML = `

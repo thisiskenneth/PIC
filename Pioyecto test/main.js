@@ -11,7 +11,7 @@ const cargarComponente = (nombre) => {
 };
 
 window.addEventListener('DOMContentLoaded', () => {
-  cargarComponente('air-quality-dashboard');
+  cargarComponente('contaminacion-componente');
 });
 
 // Escuchar evento personalizado 'navegar' desde nav-sidebar

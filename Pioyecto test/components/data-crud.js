@@ -154,7 +154,7 @@ class DataCrud extends HTMLElement {
 
     const container = document.createElement('div');
     container.classList.add('card');
-    container.innerHTML = `<h2>📝 Recomendaciones</h2>`;
+    container.innerHTML = `<h2>📝 Danos tus recomendaciones de protección...</h2>`;
 
     const input = document.createElement('input');
     input.placeholder = 'Escribe una recomendación...';
