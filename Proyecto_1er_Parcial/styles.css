@@ -1,0 +1,114 @@
+:root {
+  --color-bg: #f1f5f9;
+  --color-header: #0077b6;
+  --color-sidebar: #ffffff;
+  --color-box: #e3f2fd;
+  --color-title: #0077b6;
+  --font: 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  font-family: var(--font);
+}
+
+main-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: var(--color-header);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  font-size: 1.2rem;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav-sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 220px;
+  bottom: 0;
+  background: var(--color-sidebar);
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+  padding: 1rem 0.5rem;
+  z-index: 999;
+}
+
+nav-sidebar button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin: 0.3rem 0;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 1rem;
+  color: #333;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s, color 0.3s, transform 0.2s ease;
+  position: relative;
+}
+
+nav-sidebar button:hover {
+  background-color: #e3f2fd;
+  color: var(--color-title);
+  transform: translateX(5px);
+  box-shadow: 2px 2px 6px rgba(0, 119, 182, 0.2);
+}
+
+nav-sidebar button::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--color-title);
+  border-radius: 0 4px 4px 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+nav-sidebar button:hover::before {
+  opacity: 1;
+}
+
+
+main#contenido {
+  margin-left: 240px;    /* deja espacio para el sidebar */
+  margin-top: 80px;      /* deja espacio para el menu */
+  padding: 2rem;
+  
+  /* Añadido para mejorar adaptación y evitar cortes */
+  box-sizing: border-box;  
+  max-width: calc(100vw - 240px - 4rem); /* ancho máximo: ancho de ventana menos sidebar y padding */
+  min-height: calc(100vh - 80px - 4rem); /* al menos el alto visible menos header y padding */
+  overflow-x: auto;      /* permite scroll horizontal si algo es muy ancho */
+}
+
+
+/* Reutilizable para todos los componentes */
+h2 {
+  font-family: var(--font);
+  color: var(--color-title);
+  margin-bottom: 1rem;
+}
+
+.box {
+  background-color: var(--color-box);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}

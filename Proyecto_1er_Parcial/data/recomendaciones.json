@@ -1,0 +1,34 @@
+[
+  {
+    "categoria": "Salud",
+    "mensaje": "Usa mascarillas N95 en días con alta contaminación para proteger tus vías respiratorias."
+  },
+  {
+    "categoria": "Hogar",
+    "mensaje": "Coloca plantas purificadoras como el lirio de paz o la sansevieria en espacios cerrados."
+  },
+  {
+    "categoria": "Actividad física",
+    "mensaje": "Evita ejercitarte al aire libre entre las 6:00 a.m. y 9:00 a.m., cuando los niveles de PM2.5 son más altos."
+  },
+  {
+    "categoria": "Tecnología",
+    "mensaje": "Consulta aplicaciones móviles como AirVisual o Plume Labs para monitorear la calidad del aire."
+  },
+  {
+    "categoria": "Salud",
+    "mensaje": "Mantente hidratado; el agua ayuda a tu cuerpo a eliminar toxinas y contaminantes inhalados."
+  },
+  {
+    "categoria": "Hogar",
+    "mensaje": "Ventila tu casa temprano en la mañana y luego mantén las ventanas cerradas si el AQI sube."
+  },
+  {
+    "categoria": "Salud",
+    "mensaje": "Si tienes enfermedades respiratorias, consulta a tu médico antes de exponerte al aire contaminado."
+  },
+  {
+    "categoria": "Hogar",
+    "mensaje": "Evita el uso de inciensos y velas aromáticas en exceso; liberan partículas nocivas."
+  }
+]
